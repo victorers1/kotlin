@@ -5,20 +5,16 @@ interface Expressao
 class Numero(val valor: Int) : Expressao
 class Soma(val esquerdo: Expressao, val direito: Expressao) : Expressao
 
-fun avaliaExpressao(expressao: Expressao): Int {
-    if (expressao is Numero) {
-        return expressao.valor
+fun avaliaExpressao(expressao: Expressao): Int = when (expressao) {
+    is Numero -> {
+        println("Expressão com número: ${expressao.valor}")
+        expressao.valor // Last expression of a block is its result
     }
-
-    if (expressao is Soma) {
-        return avaliaExpressao(expressao.esquerdo) + avaliaExpressao(expressao.direito)
-    }
-
-    throw IllegalArgumentException("Expressão é desconhecida")
+    is Soma -> avaliaExpressao(expressao.esquerdo) + avaliaExpressao(expressao.direito)
+    else -> throw IllegalArgumentException("Expressão é desconhecida")
 }
 
-
-fun main(){
+fun main() {
     // (1 + 2) + 4
 
     val um = Numero(1)
