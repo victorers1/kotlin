@@ -9,6 +9,10 @@ enum class Cor(val red: Int, val green: Int, val blue: Int) {
 }
 
 fun main() {
-    val rgb = Cor.VERMELHO.rgb()
-    println(rgb)
+    val ver = Cor.VERMELHO
+
+    println("${Cor.VERMELHO.name} tem as componentes RGB: (${ver.red}, ${ver.green}, ${ver.blue})")
+    println("${Cor.BRANCO} tem o valor decimal de ${Cor.BRANCO.rgb()}")
+    println()
+
 }
